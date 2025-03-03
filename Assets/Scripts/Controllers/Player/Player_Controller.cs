@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
 
-    [SerializeField] ActionStatus currentActionStatus = ActionStatus.IDLE;
+    [SerializeField] PlayerActionStatus currentActionStatus = PlayerActionStatus.IDLE;
     [SerializeField] FacingDirection _facingDirection = FacingDirection.RIGHT;
 
     void Start()
