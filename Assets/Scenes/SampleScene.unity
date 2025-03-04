@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 104908486}
   - component: {fileID: 104908485}
   - component: {fileID: 104908489}
+  - component: {fileID: 104908491}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -297,6 +298,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentActionStatus: 1
   _facingDirection: 1
+  _walkSpeed: 5
+  _runSpeed: 8
+  _isGrounded: 0
+  _isWallDetected: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  _playerAnimationController: {fileID: 0}
   _wallCheckDistance: 0.85
   _groundCheckDistance: 1.65
 --- !u!95 &104908490
@@ -321,6 +330,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &104908491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104908484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227421c3ad7b5a3488c96b23277a61fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &334152048
 GameObject:
   m_ObjectHideFlags: 0
