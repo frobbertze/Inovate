@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Background
   - Water
   - UI
-  - Enemy
   - Ground
   - Item
-  - Background
+  - 
+  - Player
   - 
   - 
   - 
@@ -40,6 +40,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 1978825507
+    locked: 0
+  - name: Ground
+    uniqueID: 1820879753
+    locked: 0
+  - name: Item
+    uniqueID: 352196465
+    locked: 0
+  - name: Player
+    uniqueID: 1112249353
     locked: 0
   m_RenderingLayers:
   - Default
