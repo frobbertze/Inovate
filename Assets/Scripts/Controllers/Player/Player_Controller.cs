@@ -10,10 +10,11 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] FacingDirection _facingDirection = FacingDirection.RIGHT;
     [SerializeField] float _walkSpeed = 5f;
     [SerializeField] float _runSpeed = 8f;
-    [SerializeField] Animator _animator;
+    //[SerializeField] Animator _animator;
     [SerializeField] bool _isGrounded;
     [SerializeField] bool _isWallDetected;
     [SerializeField] LayerMask whatIsGround;
+    [SerializeField] Player_AC _playerAnimationController;
 
     [Header("OnDrawGizmos")]
     [SerializeField] private float _wallCheckDistance = 0.65f;
@@ -21,7 +22,8 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
+        _playerAnimationController = GetComponent<Player_AC>();
     }
     void Start()
     {
@@ -33,7 +35,7 @@ public class Player_Controller : MonoBehaviour
     {
         HandleInput();
         HandleCollision();
-        HandleAnimation();
+        //HandleAnimation();
     }
 
 
@@ -47,7 +49,8 @@ public class Player_Controller : MonoBehaviour
 
     private void HandleAnimation()
     {
-        _animator.SetInteger("MovementAction", (int)currentActionStatus);
+
+        _playerAnimationController.SetAnimationForAction(currentActionStatus);
     }
 
     private void HandleInput()
@@ -68,10 +71,14 @@ public class Player_Controller : MonoBehaviour
             {
                 FlipPlayer();
             }
+
+            HandleAnimation();
         }
         else
         {
             currentActionStatus = PlayerActionStatus.IDLE;
+
+            HandleAnimation();
         }
     }
 
