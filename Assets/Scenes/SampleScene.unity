@@ -199,10 +199,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
+  m_Mass: 4.5
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -296,18 +296,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9f497a055a1834ca16ca414dac3ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActionStatus: 1
+  currentActionStatus: 0
   _facingDirection: 1
   _walkSpeed: 5
   _runSpeed: 8
+  _jumpPower: 3
   _isGrounded: 0
   _isWallDetected: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _playerAnimationController: {fileID: 0}
   _wallCheckDistance: 0.85
-  _groundCheckDistance: 1.65
+  _groundCheckDistance: 1.7
 --- !u!95 &104908490
 Animator:
   serializedVersion: 7
@@ -623,7 +624,7 @@ GameObject:
   - component: {fileID: 1341348299}
   - component: {fileID: 1341348298}
   - component: {fileID: 1341348297}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

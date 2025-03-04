@@ -5,12 +5,14 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
 
+    Rigidbody2D _rigidBody2D;
+
     [Header("Player Controller")]
     [SerializeField] PlayerActionStatus currentActionStatus = PlayerActionStatus.IDLE;
     [SerializeField] FacingDirection _facingDirection = FacingDirection.RIGHT;
     [SerializeField] float _walkSpeed = 5f;
     [SerializeField] float _runSpeed = 8f;
-    //[SerializeField] Animator _animator;
+    [SerializeField] float _jumpPower = 3f;
     [SerializeField] bool _isGrounded;
     [SerializeField] bool _isWallDetected;
     [SerializeField] LayerMask whatIsGround;
@@ -24,6 +26,8 @@ public class Player_Controller : MonoBehaviour
     {
         //_animator = GetComponent<Animator>();
         _playerAnimationController = GetComponent<Player_AC>();
+        _rigidBody2D = GetComponent<Rigidbody2D>();
+
     }
     void Start()
     {
@@ -35,7 +39,7 @@ public class Player_Controller : MonoBehaviour
     {
         HandleInput();
         HandleCollision();
-        //HandleAnimation();
+       
     }
 
 
@@ -58,6 +62,18 @@ public class Player_Controller : MonoBehaviour
         float yInput = Input.GetAxis("Vertical");
         float xInput = Input.GetAxis("Horizontal");
         bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        bool isJumping = Input.GetKey(KeyCode.Space);
+
+        if (isJumping && _isGrounded)
+        {
+
+            currentActionStatus =  PlayerActionStatus.JUMP;
+             HandleAnimation();
+            _rigidBody2D.AddForceY(_jumpPower, ForceMode2D.Impulse);
+
+          
+
+        }
 
         if (xInput != 0)
         {
@@ -72,14 +88,16 @@ public class Player_Controller : MonoBehaviour
                 FlipPlayer();
             }
 
-            HandleAnimation();
+         
         }
         else
         {
             currentActionStatus = PlayerActionStatus.IDLE;
 
-            HandleAnimation();
-        }
+         
+        }  
+        
+        HandleAnimation();
     }
 
     private bool ShouldFlip(float xInput)
