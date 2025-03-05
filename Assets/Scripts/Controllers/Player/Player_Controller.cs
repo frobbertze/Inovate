@@ -82,13 +82,13 @@ public class Player_Controller : MonoBehaviour
         {
             HandlePlayerMovement(xInput, isRunning);
 
-            //return;
+            
         }
 
 
         if (isJumping && _isGrounded)
         {
-            HandlePlayerJump();
+            HandlePlayerJump(xInput);
 
             return;
 
@@ -99,8 +99,6 @@ public class Player_Controller : MonoBehaviour
 
             currentActionStatus = PlayerActionStatus.FALL;
 
-            //_rigidBody2D.AddForceY(_jumpPower, ForceMode2D.Impulse);
-
             return;
         }
 
@@ -108,13 +106,24 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    private void HandlePlayerJump()
+    private void HandlePlayerJump(float xInput)
     {
+
+        float _speed;
+
+        if ((int)currentActionStatus == 15)
+        {
+            _speed = _runSpeed;
+        }
+        else
+        {
+            _speed = _walkSpeed;
+        }
+
         currentActionStatus = PlayerActionStatus.JUMP;
-        //_rigidBody2D.AddForce(new Vector2(_walkSpeed,_jumpPower));
-        //_rigidBody2D.transform.position = new Vector3(_rigidBody2D.transform.position.x,_rigidBody2D.transform.position.y + _jumpPower, )
-        _rigidBody2D.AddForceX(_walkSpeed * GetFacingDirection(), ForceMode2D.Impulse);
-        _rigidBody2D.AddForceY(_jumpPower, ForceMode2D.Impulse);
+
+        _rigidBody2D.linearVelocity = new Vector2(xInput * _speed, _jumpPower);
+
     }
 
     private void HandlePlayerIdle()
