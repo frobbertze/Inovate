@@ -17,6 +17,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] bool _isWallDetected;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] Player_AC _playerAnimationController;
+    
 
     [Header("OnDrawGizmos")]
     [SerializeField] private float _wallCheckDistance = 0.65f;
@@ -24,9 +25,10 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
-        //_animator = GetComponent<Animator>();
+        
         _playerAnimationController = GetComponent<Player_AC>();
         _rigidBody2D = GetComponent<Rigidbody2D>();
+        
 
     }
     void Start()
@@ -37,9 +39,14 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInput();
+
         HandleCollision();
-       
+
+        HandleInput();
+        HandleAnimation();
+      
+        MoveMainCameraWithPlayer();
+
     }
 
 
@@ -64,40 +71,75 @@ public class Player_Controller : MonoBehaviour
         bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         bool isJumping = Input.GetKey(KeyCode.Space);
 
+        if (xInput == 0 && isJumping == false && _isGrounded)
+        {
+            HandlePlayerIdle();
+
+            return;
+        }
+
+        if (xInput != 0 && _isGrounded)
+        {
+            HandlePlayerMovement(xInput, isRunning);
+
+            //return;
+        }
+
+
         if (isJumping && _isGrounded)
         {
+            HandlePlayerJump();
 
-            currentActionStatus =  PlayerActionStatus.JUMP;
-             HandleAnimation();
-            _rigidBody2D.AddForceY(_jumpPower, ForceMode2D.Impulse);
-
-          
+            return;
 
         }
 
-        if (xInput != 0)
+        if (!isJumping && !_isGrounded && currentActionStatus != PlayerActionStatus.WALK && currentActionStatus != PlayerActionStatus.RUN)
         {
-            currentActionStatus = isRunning ? PlayerActionStatus.RUN : PlayerActionStatus.WALK;
 
-            float speed = isRunning ? _runSpeed : _walkSpeed;
+            currentActionStatus = PlayerActionStatus.FALL;
 
-            transform.Translate(Vector3.right * xInput * GetFacingDirection() * Time.deltaTime * speed);
+            //_rigidBody2D.AddForceY(_jumpPower, ForceMode2D.Impulse);
 
-            if (ShouldFlip(xInput))
-            {
-                FlipPlayer();
-            }
-
-         
+            return;
         }
-        else
-        {
-            currentActionStatus = PlayerActionStatus.IDLE;
 
-         
-        }  
-        
+
+
+    }
+
+    private void HandlePlayerJump()
+    {
+        currentActionStatus = PlayerActionStatus.JUMP;
+        //_rigidBody2D.AddForce(new Vector2(_walkSpeed,_jumpPower));
+        //_rigidBody2D.transform.position = new Vector3(_rigidBody2D.transform.position.x,_rigidBody2D.transform.position.y + _jumpPower, )
+        _rigidBody2D.AddForceX(_walkSpeed * GetFacingDirection(), ForceMode2D.Impulse);
+        _rigidBody2D.AddForceY(_jumpPower, ForceMode2D.Impulse);
+    }
+
+    private void HandlePlayerIdle()
+    {
+        currentActionStatus = PlayerActionStatus.IDLE;
         HandleAnimation();
+    }
+
+    private void HandlePlayerMovement(float xInput, bool isRunning)
+    {
+        currentActionStatus = isRunning ? PlayerActionStatus.RUN : PlayerActionStatus.WALK;
+
+        float speed = isRunning ? _runSpeed : _walkSpeed;
+
+        transform.Translate(Vector3.right * xInput * GetFacingDirection() * Time.deltaTime * speed);
+
+        if (ShouldFlip(xInput))
+        {
+            FlipPlayer();
+        }
+    }
+
+    private void MoveMainCameraWithPlayer()
+    {
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
 
     private bool ShouldFlip(float xInput)
