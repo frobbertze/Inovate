@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float _walkSpeed = 5f;
     [SerializeField] float _runSpeed = 8f;
     [SerializeField] float _jumpPower = 3f;
-    [SerializeField] bool _isGrounded;
+    [SerializeField] bool _isGrounded = true;
     [SerializeField] bool _isWallDetected;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] Player_AC _playerAnimationController;
@@ -52,7 +52,7 @@ public class Player_Controller : MonoBehaviour
 
     private void HandleCollision()
     {
-        _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, _groundCheckDistance, whatIsGround);
+        //_isGrounded = Physics2D.Raycast(transform.position, Vector2.down, _groundCheckDistance, whatIsGround);
         _isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * GetFacingDirection(), _wallCheckDistance, whatIsGround);
 
     }
@@ -180,4 +180,29 @@ public class Player_Controller : MonoBehaviour
     {
         return _facingDirection == FacingDirection.RIGHT ? 1 : -1;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("oncollisionEnter: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+           
+            _isGrounded = true;
+
+            Debug.Log("Isgrounded:" + _isGrounded);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("oncollisionEnter: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+         
+            _isGrounded = false;
+
+            Debug.Log("Isgrounded:" + _isGrounded);
+        }
+    }
+   
 }

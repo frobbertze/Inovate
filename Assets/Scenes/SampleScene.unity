@@ -308,7 +308,7 @@ MonoBehaviour:
     m_Bits: 64
   _playerAnimationController: {fileID: 0}
   _wallCheckDistance: 0.85
-  _groundCheckDistance: 23
+  _groundCheckDistance: 1.7
 --- !u!95 &104908490
 Animator:
   serializedVersion: 7
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 1341348297}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
