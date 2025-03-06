@@ -17,7 +17,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] bool _isWallDetected;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] Player_AC _playerAnimationController;
-    
+
 
     [Header("OnDrawGizmos")]
     [SerializeField] private float _wallCheckDistance = 0.65f;
@@ -25,10 +25,10 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
-        
+
         _playerAnimationController = GetComponent<Player_AC>();
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        
+
 
     }
     void Start()
@@ -44,7 +44,7 @@ public class Player_Controller : MonoBehaviour
 
         HandleInput();
         HandleAnimation();
-      
+
         MoveMainCameraWithPlayer();
 
     }
@@ -70,8 +70,9 @@ public class Player_Controller : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         bool isJumping = Input.GetKey(KeyCode.Space);
+        bool isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-        if (xInput == 0 && isJumping == false && _isGrounded)
+        if (xInput == 0 && isJumping == false && _isGrounded && isCrouching == false)
         {
             HandlePlayerIdle();
 
@@ -82,9 +83,13 @@ public class Player_Controller : MonoBehaviour
         {
             HandlePlayerMovement(xInput, isRunning);
 
-            
+
         }
 
+        if(xInput == 0 && _isGrounded && isCrouching)
+        {
+            HandlePlayerCrouch();
+        }
 
         if (isJumping && _isGrounded)
         {
@@ -123,6 +128,13 @@ public class Player_Controller : MonoBehaviour
         currentActionStatus = PlayerActionStatus.JUMP;
 
         _rigidBody2D.linearVelocity = new Vector2(xInput * _speed, _jumpPower);
+
+    }
+
+    private void HandlePlayerCrouch()
+    {
+
+        currentActionStatus = PlayerActionStatus.CROUCH;
 
     }
 
@@ -183,26 +195,18 @@ public class Player_Controller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("oncollisionEnter: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Ground"))
         {
-           
             _isGrounded = true;
-
-            Debug.Log("Isgrounded:" + _isGrounded);
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("oncollisionEnter: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Ground"))
         {
-         
             _isGrounded = false;
-
-            Debug.Log("Isgrounded:" + _isGrounded);
         }
     }
-   
+
 }
