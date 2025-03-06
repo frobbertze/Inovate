@@ -79,7 +79,7 @@ public class Player_Controller : MonoBehaviour
             return;
         }
 
-        if (xInput != 0 && _isGrounded)
+        if (xInput != 0 && _isGrounded && !_isWallDetected)
         {
             HandlePlayerMovement(xInput, isRunning);
 
