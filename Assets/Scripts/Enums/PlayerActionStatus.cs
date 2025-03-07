@@ -17,5 +17,6 @@ public enum PlayerActionStatus
     ROLL = 12,
     CLIMB = 13,
     LEDGE_GRAB = 14,
-    RUN = 15
+    RUN = 15,
+    CROUCH_WALK = 16
 }

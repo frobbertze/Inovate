@@ -86,11 +86,6 @@ public class Player_Controller : MonoBehaviour
 
         }
 
-        if(xInput == 0 && _isGrounded && isCrouching)
-        {
-            HandlePlayerCrouch();
-        }
-
         if (isJumping && _isGrounded)
         {
             HandlePlayerJump(xInput);
@@ -98,6 +93,19 @@ public class Player_Controller : MonoBehaviour
             return;
 
         }
+
+        if (xInput == 0 && _isGrounded && isCrouching && !isJumping)
+        {
+            HandlePlayerCrouch();
+        }
+
+        if (xInput != 0 && _isGrounded && isCrouching)
+        {
+
+            HandlePlayerCrouchWalk();
+
+        }
+        
 
         if (!isJumping && !_isGrounded && currentActionStatus != PlayerActionStatus.WALK && currentActionStatus != PlayerActionStatus.RUN)
         {
@@ -135,6 +143,13 @@ public class Player_Controller : MonoBehaviour
     {
 
         currentActionStatus = PlayerActionStatus.CROUCH;
+
+    }
+
+    private void HandlePlayerCrouchWalk()
+    {
+
+        currentActionStatus = PlayerActionStatus.CROUCH_WALK;
 
     }
 
