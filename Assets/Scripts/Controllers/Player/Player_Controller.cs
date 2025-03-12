@@ -158,6 +158,13 @@ public class Player_Controller : MonoBehaviour
 
     }
 
+    private void HandlePlayerCrouchWalk()
+    {
+
+        currentActionStatus = PlayerActionStatus.CROUCH_WALK;
+
+    }
+
     private void HandlePlayerIdle()
     {
         //currentActionStatus = PlayerActionStatus.IDLE;

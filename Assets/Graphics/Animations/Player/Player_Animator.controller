@@ -106,6 +106,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -4496091628766698850}
     m_Position: {x: 115, y: 65, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4641327737327603313}
+    m_Position: {x: 150, y: 130, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -7588659175090252843}
@@ -163,7 +166,33 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 74d3c21e8c93eb64c80d20e316c56f75, type: 2}
+  m_Motion: {fileID: 7400000, guid: 04d17edadb2cb16468b67c550db09fb7, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-4641327737327603313
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Jump
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 43cffc6c9f964664f8aeb9ef18404cd4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -189,7 +218,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6e6a617bd346b574690e11f6966f133a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2b2c18b9cb256b34eb7366b948b54587, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -447,6 +476,22 @@ BlendTree:
     m_DirectBlendParameter: MovementAction
     m_Mirror: 0
   - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 43cffc6c9f964664f8aeb9ef18404cd4, type: 2}
+    m_Threshold: 2
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: MovementAction
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 04d17edadb2cb16468b67c550db09fb7, type: 2}
+    m_Threshold: 4
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: MovementAction
+    m_Mirror: 0
+  - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 55d7761808ac6e345bd0055d05e5cc63, type: 2}
     m_Threshold: 10
     m_Position: {x: 0, y: 0}
@@ -462,10 +507,18 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: MovementAction
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 2b2c18b9cb256b34eb7366b948b54587, type: 2}
+    m_Threshold: 16
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1.1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: MovementAction
+    m_Mirror: 0
   m_BlendParameter: MovementAction
   m_BlendParameterY: MovementAction
   m_MinThreshold: 0
-  m_MaxThreshold: 15
+  m_MaxThreshold: 16
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
