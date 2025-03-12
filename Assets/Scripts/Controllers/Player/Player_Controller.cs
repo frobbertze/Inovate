@@ -56,7 +56,7 @@ public class Player_Controller : MonoBehaviour
 
         //HandleAnimation();
 
-        //MoveMainCameraWithPlayer();
+        MoveMainCameraWithPlayer();
 
     }
 

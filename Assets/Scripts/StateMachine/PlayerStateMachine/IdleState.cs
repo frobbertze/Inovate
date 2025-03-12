@@ -40,7 +40,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 
             if (PlayerData.xInput != 0 && PlayerData.IsGrounded && !PlayerData.IsWallDetected)
             {
-                Debug.Log("Idle to Walk");
+                //Debug.Log("Idle to Walk");
 
                 return PlayerData.isRunning ? PlayerMovementState.RUN : PlayerMovementState.WALK;
 
