@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2356463877857062233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.99874246, w: 0.050135285}
+  m_LocalRotation: {x: 0, y: 0, z: -0.99874246, w: 0.05013516}
   m_LocalPosition: {x: 0.066672824, y: 0.24466097, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3045883893046816019}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.5053932, w: 0.8628891}
+  m_LocalRotation: {x: -0, y: -0, z: 0.50539315, w: 0.86288923}
   m_LocalPosition: {x: 0.9039648, y: -0.04423298, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 6556658847158510697}
   - component: {fileID: 7828211079590674173}
   - component: {fileID: 5619667990841396369}
+  - component: {fileID: 2161959811077705480}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -557,24 +558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9f497a055a1834ca16ca414dac3ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB: {fileID: 0}
-  _facingDirection: 1
-  WalkSpeed: 3
-  RunSpeed: 5
-  JumpPower: 3
-  IsGrounded: 1
-  IsWallDetected: 0
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  _playerAnimationController: {fileID: 0}
   _wallCheckDistance: 0.85
   _groundCheckDistance: 1.7
-  isRunning: 0
-  isJumping: 0
-  isCrouching: 0
-  yInput: 0
-  xInput: 0
+  PlayerData: {fileID: 0}
 --- !u!114 &1611172560809784999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +644,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31925cb31d2bc724198f963602b49ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_Controller: {fileID: 3271088905249643119}
+  PlayerData: {fileID: 2161959811077705480}
+--- !u!114 &2161959811077705480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4455529689157897276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4df73a1b293c2419b3d89f08843ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkSpeed: 3
+  RunSpeed: 5
+  JumpPower: 8
+  IsGrounded: 1
+  IsWallDetected: 0
+  WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  isRunning: 0
+  isJumping: 1
+  isCrouching: 0
+  yInput: 0
+  xInput: 0
+  RB: {fileID: 3089873601708565279}
+  _facingDirection: 1
+  PlayerTransForm: {fileID: 8544993869904549843}
+  PlayerAnimationController: {fileID: 1611172560809784999}
 --- !u!1 &4715324830848893209
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6338658956998925083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.16594055, w: 0.9861358}
+  m_LocalRotation: {x: 0, y: 0, z: -0.16594036, w: 0.9861358}
   m_LocalPosition: {x: 0.24519852, y: 0.17495194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -907,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8243529890022687385}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.85463196, w: 0.51923436}
+  m_LocalRotation: {x: -0, y: -0, z: 0.8546319, w: 0.51923424}
   m_LocalPosition: {x: 0.915158, y: 0.03327042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -938,7 +953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8898929143236172224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.9804883, w: 0.19657767}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9804883, w: 0.19657758}
   m_LocalPosition: {x: 0.0026400336, y: -0.07585211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

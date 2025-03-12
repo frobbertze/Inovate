@@ -4023,41 +4023,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 642399765856724388, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.51923424
-      objectReference: {fileID: 0}
-    - target: {fileID: 642399765856724388, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.8546319
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278806440611644284, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.86288923
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278806440611644284, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.50539315
-      objectReference: {fileID: 0}
     - target: {fileID: 4455529689157897276, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619667990841396369, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: PlayerData
-      value: 
-      objectReference: {fileID: 7658512678024976922}
-    - target: {fileID: 6636942668986324141, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.05013516
-      objectReference: {fileID: 0}
-    - target: {fileID: 6894068105242139269, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.19657758
-      objectReference: {fileID: 0}
-    - target: {fileID: 7377363547687996852, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.16594036
       objectReference: {fileID: 0}
     - target: {fileID: 8544993869904549843, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4102,66 +4070,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4455529689157897276, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7658512678024976922}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
---- !u!1 &7658512678024976918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4455529689157897276, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-  m_PrefabInstance: {fileID: 7658512678024976917}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7658512678024976919 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1611172560809784999, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-  m_PrefabInstance: {fileID: 7658512678024976917}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7658512678024976918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 227421c3ad7b5a3488c96b23277a61fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &7658512678024976920 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 3089873601708565279, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-  m_PrefabInstance: {fileID: 7658512678024976917}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7658512678024976921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8544993869904549843, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
-  m_PrefabInstance: {fileID: 7658512678024976917}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7658512678024976922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7658512678024976918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4df73a1b293c2419b3d89f08843ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WalkSpeed: 3
-  RunSpeed: 5
-  JumpPower: 8
-  IsGrounded: 1
-  IsWallDetected: 0
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  isRunning: 0
-  isJumping: 1
-  isCrouching: 0
-  yInput: 0
-  xInput: 0
-  RB: {fileID: 7658512678024976920}
-  _facingDirection: 1
-  PlayerTransForm: {fileID: 7658512678024976921}
-  PlayerAnimationController: {fileID: 7658512678024976919}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
