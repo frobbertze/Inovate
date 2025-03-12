@@ -22,10 +22,10 @@ public class Player_AC : MonoBehaviour
 
     }
 
-    public void SetAnimationForAction(PlayerActionStatus playerActionStatus)
+    public void SetAnimationForAction(PlayerMovementState playerMovementState)
     {
 
-        _animator.SetFloat("MovementAction", (float)playerActionStatus);
+        _animator.SetFloat("MovementAction", (float)playerMovementState);
         
     }
 

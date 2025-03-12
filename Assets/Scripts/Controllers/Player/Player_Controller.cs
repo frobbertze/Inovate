@@ -1,21 +1,24 @@
 using Assets.Scripts.Enums;
-using System;
+using Assets.Scripts.StateMachine.PlayerStateMachine;
 using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
 
-    Rigidbody2D _rigidBody2D;
+
+    private PlayerMovementStateManager _playerMovementStateManager;
+
+    public Rigidbody2D RB;
 
     [Header("Player Controller")]
-    [SerializeField] PlayerActionStatus currentActionStatus = PlayerActionStatus.IDLE;
+    //[SerializeField] PlayerActionStatus currentActionStatus = PlayerActionStatus.IDLE;
     [SerializeField] FacingDirection _facingDirection = FacingDirection.RIGHT;
-    [SerializeField] float _walkSpeed = 5f;
-    [SerializeField] float _runSpeed = 8f;
-    [SerializeField] float _jumpPower = 3f;
-    [SerializeField] bool _isGrounded = true;
-    [SerializeField] bool _isWallDetected;
-    [SerializeField] LayerMask whatIsGround;
+    public float WalkSpeed = 3f;
+    public float RunSpeed = 5f;
+    public float JumpPower = 3f;
+    public bool IsGrounded = true;
+    public bool IsWallDetected;
+    public LayerMask WhatIsGround;
     [SerializeField] Player_AC _playerAnimationController;
 
 
@@ -23,12 +26,20 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private float _wallCheckDistance = 0.65f;
     [SerializeField] private float _groundCheckDistance = 0.5f;
 
+
+    public bool isRunning;
+    public bool isJumping;
+    public bool isCrouching;
+    public float yInput;
+    public float xInput;
+
     private void Awake()
     {
 
         _playerAnimationController = GetComponent<Player_AC>();
-        _rigidBody2D = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
 
+        _playerMovementStateManager = gameObject.GetComponent<PlayerMovementStateManager>();
 
     }
     void Start()
@@ -36,16 +47,26 @@ public class Player_Controller : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
 
+        yInput = Input.GetAxis("Vertical");
+        xInput = Input.GetAxis("Horizontal");
+
         HandleCollision();
 
         HandleInput();
-        HandleAnimation();
+        
 
-        MoveMainCameraWithPlayer();
+        _playerMovementStateManager.Update();
+
+
+
+        //HandleAnimation();
+
+        //MoveMainCameraWithPlayer();
 
     }
 
@@ -53,59 +74,58 @@ public class Player_Controller : MonoBehaviour
     private void HandleCollision()
     {
         //_isGrounded = Physics2D.Raycast(transform.position, Vector2.down, _groundCheckDistance, whatIsGround);
-        _isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * GetFacingDirection(), _wallCheckDistance, whatIsGround);
+        IsWallDetected = Physics2D.Raycast(transform.position, Vector2.right * GetFacingDirection(), _wallCheckDistance, WhatIsGround);
 
     }
 
 
-    private void HandleAnimation()
+    public void HandleAnimation(PlayerMovementState state)
     {
 
-        _playerAnimationController.SetAnimationForAction(currentActionStatus);
+        _playerAnimationController.SetAnimationForAction(state);
     }
 
     private void HandleInput()
     {
-        float yInput = Input.GetAxis("Vertical");
-        float xInput = Input.GetAxis("Horizontal");
-        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        bool isJumping = Input.GetKey(KeyCode.Space);
-        bool isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-        if (xInput == 0 && isJumping == false && _isGrounded && isCrouching == false)
-        {
-            HandlePlayerIdle();
+         isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+         isJumping = Input.GetKey(KeyCode.Space);
+         isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-            return;
-        }
+        //if (xInput == 0 && isJumping == false && _isGrounded && isCrouching == false)
+        //{
+        //    HandlePlayerIdle();
 
-        if (xInput != 0 && _isGrounded && !_isWallDetected)
-        {
-            HandlePlayerMovement(xInput, isRunning);
+        //    return;
+        //}
+
+        //if (xInput != 0 && _isGrounded && !_isWallDetected)
+        //{
+        //    HandlePlayerMovement(xInput, isRunning);
 
 
-        }
+        //}
 
-        if(xInput == 0 && _isGrounded && isCrouching)
-        {
-            HandlePlayerCrouch();
-        }
+        //if (xInput == 0 && _isGrounded && isCrouching)
+        //{
+        //    HandlePlayerCrouch();
+        //}
 
-        if (isJumping && _isGrounded)
-        {
-            HandlePlayerJump(xInput);
+        //if (isJumping && _isGrounded)
+        //{
+        //    HandlePlayerJump(xInput);
 
-            return;
+        //    return;
 
-        }
+        //}
 
-        if (!isJumping && !_isGrounded && currentActionStatus != PlayerActionStatus.WALK && currentActionStatus != PlayerActionStatus.RUN)
-        {
+        //if (!isJumping && !_isGrounded && currentActionStatus != PlayerActionStatus.WALK && currentActionStatus != PlayerActionStatus.RUN)
+        //{
 
-            currentActionStatus = PlayerActionStatus.FALL;
+        //    currentActionStatus = PlayerActionStatus.FALL;
 
-            return;
-        }
+        //    return;
+        //}
 
 
 
@@ -116,46 +136,46 @@ public class Player_Controller : MonoBehaviour
 
         float _speed;
 
-        if ((int)currentActionStatus == 15)
-        {
-            _speed = _runSpeed;
-        }
-        else
-        {
-            _speed = _walkSpeed;
-        }
+        //if ((int)currentActionStatus == 15)
+        //{
+        //    _speed = _runSpeed;
+        //}
+        //else
+        //{
+        //    _speed = WalkSpeed;
+        //}
 
-        currentActionStatus = PlayerActionStatus.JUMP;
+        //currentActionStatus = PlayerActionStatus.JUMP;
 
-        _rigidBody2D.linearVelocity = new Vector2(xInput * _speed, _jumpPower);
+        //RB.linearVelocity = new Vector2(xInput * _speed, _jumpPower);
 
     }
 
     private void HandlePlayerCrouch()
     {
 
-        currentActionStatus = PlayerActionStatus.CROUCH;
+        //currentActionStatus = PlayerActionStatus.CROUCH;
 
     }
 
     private void HandlePlayerIdle()
     {
-        currentActionStatus = PlayerActionStatus.IDLE;
-        HandleAnimation();
+        //currentActionStatus = PlayerActionStatus.IDLE;
+        //HandleAnimation();
     }
 
     private void HandlePlayerMovement(float xInput, bool isRunning)
     {
-        currentActionStatus = isRunning ? PlayerActionStatus.RUN : PlayerActionStatus.WALK;
+        //currentActionStatus = isRunning ? PlayerActionStatus.RUN : PlayerActionStatus.WALK;
 
-        float speed = isRunning ? _runSpeed : _walkSpeed;
+        //float speed = isRunning ? _runSpeed : WalkSpeed;
 
-        transform.Translate(Vector3.right * xInput * GetFacingDirection() * Time.deltaTime * speed);
+        //transform.Translate(Vector3.right * xInput * GetFacingDirection() * Time.deltaTime * speed);
 
-        if (ShouldFlip(xInput))
-        {
-            FlipPlayer();
-        }
+        //if (ShouldFlip(xInput))
+        //{
+        //    FlipPlayer();
+        //}
     }
 
     private void MoveMainCameraWithPlayer()
@@ -163,12 +183,12 @@ public class Player_Controller : MonoBehaviour
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
 
-    private bool ShouldFlip(float xInput)
+    public bool ShouldFlip(float xInput)
     {
         return xInput > 0 && _facingDirection == FacingDirection.LEFT || xInput < 0 && _facingDirection == FacingDirection.RIGHT;
     }
 
-    private void FlipPlayer()
+    public void FlipPlayer()
     {
         _facingDirection = _facingDirection == FacingDirection.RIGHT ? FacingDirection.LEFT : FacingDirection.RIGHT;
         transform.Rotate(0f, 180f, 0f);
@@ -188,7 +208,7 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    private float GetFacingDirection()
+    public float GetFacingDirection()
     {
         return _facingDirection == FacingDirection.RIGHT ? 1 : -1;
     }
@@ -197,7 +217,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            _isGrounded = true;
+            IsGrounded = true;
         }
     }
 
@@ -205,8 +225,10 @@ public class Player_Controller : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            _isGrounded = false;
+            IsGrounded = false;
         }
     }
+
+
 
 }

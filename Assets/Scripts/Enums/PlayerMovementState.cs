@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum PlayerActionStatus
+public enum PlayerMovementState
 {
     IDLE = 0,
     WALK = 1,
