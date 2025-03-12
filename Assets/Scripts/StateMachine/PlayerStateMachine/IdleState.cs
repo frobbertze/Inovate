@@ -4,16 +4,16 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 {
     public class IdleState : BaseState<PlayerMovementState>
     {
-        public IdleState(Player_Controller player_Controller) : base(PlayerMovementState.IDLE)
+        public IdleState(PlayerDataModel playerData) : base(PlayerMovementState.IDLE)
         {
-            Player_Controller = player_Controller;
+            PlayerData = playerData;
         }
 
-        public Player_Controller Player_Controller { get; }
+        public PlayerDataModel PlayerData { get; }
 
         public override void EnterState()
         {
-            Player_Controller.HandleAnimation(StateKey);
+            PlayerData.HandleAnimation(StateKey);
             Debug.Log("Entered Idle State");
         }
 
@@ -33,32 +33,32 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
         {
            
 
-            if (Player_Controller.xInput == 0 && Player_Controller.isJumping == false && Player_Controller.IsGrounded && !Player_Controller.isCrouching)
+            if (PlayerData.xInput == 0 && PlayerData.isJumping == false && PlayerData.IsGrounded && !PlayerData.isCrouching)
             {
               return PlayerMovementState.IDLE;
             }
 
-            if (Player_Controller.xInput != 0 && Player_Controller.IsGrounded && !Player_Controller.IsWallDetected)
+            if (PlayerData.xInput != 0 && PlayerData.IsGrounded && !PlayerData.IsWallDetected)
             {
                 Debug.Log("Idle to Walk");
 
-                return Player_Controller.isRunning ? PlayerMovementState.RUN : PlayerMovementState.WALK;
+                return PlayerData.isRunning ? PlayerMovementState.RUN : PlayerMovementState.WALK;
 
 
             }
 
-            if (Player_Controller.xInput == 0 && Player_Controller.IsGrounded && Player_Controller.isCrouching)
+            if (PlayerData.xInput == 0 && PlayerData.IsGrounded && PlayerData.isCrouching)
             {
                 return PlayerMovementState.CROUCH;
             }
 
-            if (Player_Controller.isJumping && Player_Controller.IsGrounded)
+            if (PlayerData.isJumping && PlayerData.IsGrounded)
             {
                 return PlayerMovementState.JUMP;
 
             }
 
-            if (!Player_Controller.isJumping && !Player_Controller.IsGrounded && Mathf.Abs(Player_Controller.xInput) < Mathf.Epsilon)
+            if (!PlayerData.isJumping && !PlayerData.IsGrounded && Mathf.Abs(PlayerData.xInput) < Mathf.Epsilon)
             {
 
                 return PlayerMovementState.FALL;
