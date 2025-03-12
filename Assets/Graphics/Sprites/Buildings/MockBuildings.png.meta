@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: cc90b5e68540e7d4c9dedc3c4354c5c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6804880548579092090
+    second: MockBuildings_0
+  - first:
+      213: 6073279602295104247
+    second: MockBuildings_1
+  - first:
+      213: 75929347112870893
+    second: MockBuildings_2
+  - first:
+      213: 3753342785083441568
+    second: MockBuildings_3
+  - first:
+      213: 5019657084500176564
+    second: MockBuildings_4
+  - first:
+      213: 3732371754168017252
+    second: MockBuildings_5
+  - first:
+      213: -1784060550368462971
+    second: MockBuildings_6
+  - first:
+      213: -7318364544787498545
+    second: MockBuildings_7
+  - first:
+      213: 4373374064666363189
+    second: MockBuildings_8
+  - first:
+      213: -2593144478677668862
+    second: MockBuildings_9
+  - first:
+      213: 1586696368482679727
+    second: MockBuildings_10
+  - first:
+      213: -739979193906574832
+    second: MockBuildings_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MockBuildings_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 740
+        width: 232
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a76a50d1ecacf6e50800000000000000
+      internalID: 6804880548579092090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 738
+        width: 237
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2ec64ee9f984450800000000000000
+      internalID: 6073279602295104247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_2
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 740
+        width: 234
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de3a0b2c651cd0100800000000000000
+      internalID: 75929347112870893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_3
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 737
+        width: 229
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a18c21806d861430800000000000000
+      internalID: 3753342785083441568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 367
+        width: 244
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bee7e7e58769a540800000000000000
+      internalID: 5019657084500176564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_5
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 367
+        width: 237
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 461e2e0e55c0cc330800000000000000
+      internalID: 3732371754168017252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_6
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 367
+        width: 239
+        height: 349
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 587ff7db16ebd37e0800000000000000
+      internalID: -1784060550368462971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_7
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 367
+        width: 240
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc9b02b8832ff6a90800000000000000
+      internalID: -7318364544787498545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_8
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 31
+        width: 231
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535485a6a8851bc30800000000000000
+      internalID: 4373374064666363189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 31
+        width: 239
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ce621f5dc430cd0800000000000000
+      internalID: -2593144478677668862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_10
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 32
+        width: 254
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fabffc1c0f3150610800000000000000
+      internalID: 1586696368482679727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MockBuildings_11
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 34
+        width: 231
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ac40ef7d01bb5f0800000000000000
+      internalID: -739979193906574832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a6630e321cd0e0c45a2a108dcd931837
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MockBuildings_0: 6804880548579092090
+      MockBuildings_1: 6073279602295104247
+      MockBuildings_10: 1586696368482679727
+      MockBuildings_11: -739979193906574832
+      MockBuildings_2: 75929347112870893
+      MockBuildings_3: 3753342785083441568
+      MockBuildings_4: 5019657084500176564
+      MockBuildings_5: 3732371754168017252
+      MockBuildings_6: -1784060550368462971
+      MockBuildings_7: -7318364544787498545
+      MockBuildings_8: 4373374064666363189
+      MockBuildings_9: -2593144478677668862
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
