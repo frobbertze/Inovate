@@ -29,7 +29,7 @@ namespace Assets.Scripts
         {
             PlayerAnimationController = GetComponent<Player_AC>();
             RB = GetComponent<Rigidbody2D>();
-            PlayerTransForm = transform;
+            PlayerTransForm = GetComponent<Transform>();
         }
 
         public void HandleAnimation(PlayerMovementState state)

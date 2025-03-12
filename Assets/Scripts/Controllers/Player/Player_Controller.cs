@@ -1,5 +1,4 @@
 using Assets.Scripts;
-using Assets.Scripts.Enums;
 using Assets.Scripts.StateMachine.PlayerStateMachine;
 using UnityEngine;
 
@@ -26,8 +25,7 @@ public class Player_Controller : MonoBehaviour
     private void Awake()
     {
 
-        PlayerData.PlayerAnimationController = GetComponent<Player_AC>();
-
+        
         PlayerData = GetComponent<PlayerDataModel>();
         
 
@@ -182,13 +180,13 @@ public class Player_Controller : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector3 wallCheck = new Vector3(transform.position.x + (_wallCheckDistance * PlayerData.GetFacingDirection()), transform.position.y, transform.position.z);
-        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, transform.position.z), wallCheck);
+        //Vector3 wallCheck = new Vector3(transform.position.x + (_wallCheckDistance * PlayerData.GetFacingDirection()), transform.position.y, transform.position.z);
+        //Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, transform.position.z), wallCheck);
 
 
-        Gizmos.color = Color.blue;
-        Vector3 groundCheck = new Vector3(transform.position.x, transform.position.y - _groundCheckDistance, transform.position.z);
-        Gizmos.DrawLine(transform.position, groundCheck);
+        //Gizmos.color = Color.blue;
+        //Vector3 groundCheck = new Vector3(transform.position.x, transform.position.y - _groundCheckDistance, transform.position.z);
+        //Gizmos.DrawLine(transform.position, groundCheck);
 
 
     }
