@@ -6,9 +6,14 @@ namespace Assets.Scripts
 {
     public class PlayerDataModel : MonoBehaviour
     {
+        [Header("OnDrawGizmos")]
+        public float WallCheckDistance = 1f;
+        public float GroundCheckDistance = 0.5f;
+
+
         public float WalkSpeed = 3f;
         public float RunSpeed = 5f;
-        public float JumpPower = 3f;
+        public float JumpPower = 11f;
         public bool IsGrounded = true;
         public bool IsWallDetected;
         public LayerMask WhatIsGround;

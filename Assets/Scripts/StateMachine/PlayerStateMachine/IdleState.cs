@@ -31,11 +31,34 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 
         public override PlayerMovementState GetNextState()
         {
-           
+
+            if (PlayerData.isJumping && PlayerData.IsGrounded)
+            {
+                return PlayerMovementState.JUMP;
+
+            }
+
+            if (PlayerData.xInput == 0 && PlayerData.IsGrounded && PlayerData.isCrouching)
+            {
+                return PlayerMovementState.CROUCH;
+            }
+
+
+            if (!PlayerData.isJumping && !PlayerData.IsGrounded)
+            {
+
+                return PlayerMovementState.FALL;
+
+            }
 
             if (PlayerData.xInput == 0 && PlayerData.isJumping == false && PlayerData.IsGrounded && !PlayerData.isCrouching)
             {
-              return PlayerMovementState.IDLE;
+                return PlayerMovementState.IDLE;
+            }
+
+            if (PlayerData.ShouldFlip(PlayerData.xInput))
+            {
+                PlayerData.FlipPlayer();
             }
 
             if (PlayerData.xInput != 0 && PlayerData.IsGrounded && !PlayerData.IsWallDetected)
@@ -45,24 +68,6 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
                 return PlayerData.isRunning ? PlayerMovementState.RUN : PlayerMovementState.WALK;
 
 
-            }
-
-            if (PlayerData.xInput == 0 && PlayerData.IsGrounded && PlayerData.isCrouching)
-            {
-                return PlayerMovementState.CROUCH;
-            }
-
-            if (PlayerData.isJumping && PlayerData.IsGrounded)
-            {
-                return PlayerMovementState.JUMP;
-
-            }
-
-            if (!PlayerData.isJumping && !PlayerData.IsGrounded && Mathf.Abs(PlayerData.xInput) < Mathf.Epsilon)
-            {
-
-                return PlayerMovementState.FALL;
-                
             }
 
 

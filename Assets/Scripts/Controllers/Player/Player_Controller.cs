@@ -12,12 +12,10 @@ public class Player_Controller : MonoBehaviour
 
     [Header("Player Controller")]
     //[SerializeField] PlayerActionStatus currentActionStatus = PlayerActionStatus.IDLE;
-   
-   
 
-    [Header("OnDrawGizmos")]
-    [SerializeField] private float _wallCheckDistance = 0.65f;
-    [SerializeField] private float _groundCheckDistance = 0.5f;
+
+
+
 
     [SerializeField] PlayerDataModel PlayerData;
 
@@ -25,9 +23,9 @@ public class Player_Controller : MonoBehaviour
     private void Awake()
     {
 
-        
+
         PlayerData = GetComponent<PlayerDataModel>();
-        
+
 
         _playerMovementStateManager = gameObject.GetComponent<PlayerMovementStateManager>();
 
@@ -49,7 +47,7 @@ public class Player_Controller : MonoBehaviour
 
         HandleInput();
 
-        
+
         _playerMovementStateManager.Update();
 
 
@@ -64,19 +62,45 @@ public class Player_Controller : MonoBehaviour
     private void HandleCollision()
     {
         //_isGrounded = Physics2D.Raycast(transform.position, Vector2.down, _groundCheckDistance, whatIsGround);
-        PlayerData.IsWallDetected = Physics2D.Raycast(transform.position, Vector2.right * PlayerData.GetFacingDirection(), _wallCheckDistance, PlayerData.WhatIsGround);
+        bool ray1Hit = Physics2D.Raycast(transform.position, new Vector2(PlayerData.GetFacingDirection(),transform.position.y), PlayerData.WallCheckDistance, PlayerData.WhatIsGround);
+        bool ray2Hit = Physics2D.Raycast(transform.position, new Vector2(PlayerData.GetFacingDirection(), transform.position.y - 1.35f), PlayerData.WallCheckDistance, PlayerData.WhatIsGround);
+        bool ray3Hit = Physics2D.Raycast(transform.position, new Vector2(PlayerData.GetFacingDirection(), transform.position.y + 0.5f), PlayerData.WallCheckDistance, PlayerData.WhatIsGround);
+
+
+        //Debug.Log("Ray1Hit: " + ray1Hit);
+        //Debug.Log("Ray2Hit: " + ray2Hit);
+        //Debug.Log("Ray3Hit: " + ray3Hit);
+
+
+        if (ray1Hit || ray2Hit || ray3Hit)
+        {
+            PlayerData.IsWallDetected = true;
+        }
+        else
+        {
+            PlayerData.IsWallDetected = false;
+        }
+
+        //Vector3 wallCheck = new Vector3(PlayerData.transform.position.x + PlayerData.GetFacingDirection() * PlayerData.WallCheckDistance, PlayerData.transform.position.y);
+        //Gizmos.DrawLine(transform.position, wallCheck);
+
+        //wallCheck = new Vector3(PlayerData.transform.position.x + PlayerData.GetFacingDirection() * PlayerData.WallCheckDistance, PlayerData.transform.position.y - 1.35f);
+        //Gizmos.DrawLine(transform.position, wallCheck);
+
+        //wallCheck = new Vector3(PlayerData.transform.position.x + PlayerData.GetFacingDirection() * PlayerData.WallCheckDistance, PlayerData.transform.position.y + 0.5f);
+        //Gizmos.DrawLine(transform.position, wallCheck);
 
     }
 
 
-  
+
 
     private void HandleInput()
     {
 
-         PlayerData.isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-         PlayerData.isJumping = Input.GetKey(KeyCode.Space);
-         PlayerData.isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        PlayerData.isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        PlayerData.isJumping = Input.GetKey(KeyCode.Space);
+        PlayerData.isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
         //if (xInput == 0 && isJumping == false && _isGrounded && isCrouching == false)
         //{
@@ -176,31 +200,31 @@ public class Player_Controller : MonoBehaviour
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
 
-   
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Vector3 wallCheck = new Vector3(transform.position.x + (_wallCheckDistance * PlayerData.GetFacingDirection()), transform.position.y, transform.position.z);
-        //Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, transform.position.z), wallCheck);
 
 
-        //Gizmos.color = Color.blue;
-        //Vector3 groundCheck = new Vector3(transform.position.x, transform.position.y - _groundCheckDistance, transform.position.z);
-        //Gizmos.DrawLine(transform.position, groundCheck);
 
 
-    }
-
-   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //_playerMovementStateManager.OnCollisionEnter2D(collision);
 
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.otherCollider is CapsuleCollider2D)
         {
-            PlayerData.IsGrounded = true;
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                PlayerData.IsGrounded = true;
+            }
+            
         }
+
+
+        //if (collision.otherCollider is BoxCollider2D)
+        //{
+            
+        //}
+
+      
 
     }
 
@@ -208,9 +232,13 @@ public class Player_Controller : MonoBehaviour
     {
         //_playerMovementStateManager.OnCollisionExit2D(collision);
 
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.otherCollider is CapsuleCollider2D)
         {
-            PlayerData.IsGrounded = false;
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                PlayerData.IsGrounded = false;
+            }
+
         }
     }
 
