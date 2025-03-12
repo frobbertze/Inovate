@@ -8,7 +8,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
     {
 
 
-        public Player_Controller Player_Controller;
+        public PlayerDataModel PlayerData;
 
 
         private void Awake()
@@ -22,12 +22,12 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 
         protected override void InitializeStates()
         {
-            States.Add(PlayerMovementState.IDLE, new IdleState(Player_Controller));
-            States.Add(PlayerMovementState.WALK, new WalkState(Player_Controller));
-            States.Add(PlayerMovementState.RUN, new RunState(Player_Controller));
-            States.Add(PlayerMovementState.JUMP, new JumpState(Player_Controller));
-            States.Add(PlayerMovementState.FALL, new FallState(Player_Controller));
-            States.Add(PlayerMovementState.CROUCH, new CrouchState(Player_Controller));
+            States.Add(PlayerMovementState.IDLE, new IdleState(PlayerData));
+            States.Add(PlayerMovementState.WALK, new WalkState(PlayerData));
+            States.Add(PlayerMovementState.RUN, new RunState(PlayerData));
+            States.Add(PlayerMovementState.JUMP, new JumpState(PlayerData));
+            States.Add(PlayerMovementState.FALL, new FallState(PlayerData));
+            States.Add(PlayerMovementState.CROUCH, new CrouchState(PlayerData));
 
             CurrentState = States[PlayerMovementState.IDLE];
         }

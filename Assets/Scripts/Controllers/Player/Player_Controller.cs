@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using Assets.Scripts.Enums;
 using Assets.Scripts.StateMachine.PlayerStateMachine;
 using UnityEngine;
@@ -8,36 +9,27 @@ public class Player_Controller : MonoBehaviour
 
     private PlayerMovementStateManager _playerMovementStateManager;
 
-    public Rigidbody2D RB;
+    //public Rigidbody2D RB;
 
     [Header("Player Controller")]
     //[SerializeField] PlayerActionStatus currentActionStatus = PlayerActionStatus.IDLE;
-    [SerializeField] FacingDirection _facingDirection = FacingDirection.RIGHT;
-    public float WalkSpeed = 3f;
-    public float RunSpeed = 5f;
-    public float JumpPower = 3f;
-    public bool IsGrounded = true;
-    public bool IsWallDetected;
-    public LayerMask WhatIsGround;
-    [SerializeField] Player_AC _playerAnimationController;
-
+   
+   
 
     [Header("OnDrawGizmos")]
     [SerializeField] private float _wallCheckDistance = 0.65f;
     [SerializeField] private float _groundCheckDistance = 0.5f;
 
+    [SerializeField] PlayerDataModel PlayerData;
 
-    public bool isRunning;
-    public bool isJumping;
-    public bool isCrouching;
-    public float yInput;
-    public float xInput;
 
     private void Awake()
     {
 
-        _playerAnimationController = GetComponent<Player_AC>();
-        RB = GetComponent<Rigidbody2D>();
+        PlayerData.PlayerAnimationController = GetComponent<Player_AC>();
+
+        PlayerData = GetComponent<PlayerDataModel>();
+        
 
         _playerMovementStateManager = gameObject.GetComponent<PlayerMovementStateManager>();
 
@@ -52,14 +44,14 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
 
-        yInput = Input.GetAxis("Vertical");
-        xInput = Input.GetAxis("Horizontal");
+        PlayerData.yInput = Input.GetAxis("Vertical");
+        PlayerData.xInput = Input.GetAxis("Horizontal");
 
         HandleCollision();
 
         HandleInput();
-        
 
+        
         _playerMovementStateManager.Update();
 
 
@@ -74,23 +66,19 @@ public class Player_Controller : MonoBehaviour
     private void HandleCollision()
     {
         //_isGrounded = Physics2D.Raycast(transform.position, Vector2.down, _groundCheckDistance, whatIsGround);
-        IsWallDetected = Physics2D.Raycast(transform.position, Vector2.right * GetFacingDirection(), _wallCheckDistance, WhatIsGround);
+        PlayerData.IsWallDetected = Physics2D.Raycast(transform.position, Vector2.right * PlayerData.GetFacingDirection(), _wallCheckDistance, PlayerData.WhatIsGround);
 
     }
 
 
-    public void HandleAnimation(PlayerMovementState state)
-    {
-
-        _playerAnimationController.SetAnimationForAction(state);
-    }
+  
 
     private void HandleInput()
     {
 
-         isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-         isJumping = Input.GetKey(KeyCode.Space);
-         isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+         PlayerData.isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+         PlayerData.isJumping = Input.GetKey(KeyCode.Space);
+         PlayerData.isCrouching = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
         //if (xInput == 0 && isJumping == false && _isGrounded && isCrouching == false)
         //{
@@ -161,7 +149,7 @@ public class Player_Controller : MonoBehaviour
     private void HandlePlayerCrouchWalk()
     {
 
-        currentActionStatus = PlayerActionStatus.CROUCH_WALK;
+        //currentActionStatus = PlayerActionStatus.CROUCH_WALK;
 
     }
 
@@ -190,21 +178,11 @@ public class Player_Controller : MonoBehaviour
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
 
-    public bool ShouldFlip(float xInput)
-    {
-        return xInput > 0 && _facingDirection == FacingDirection.LEFT || xInput < 0 && _facingDirection == FacingDirection.RIGHT;
-    }
-
-    public void FlipPlayer()
-    {
-        _facingDirection = _facingDirection == FacingDirection.RIGHT ? FacingDirection.LEFT : FacingDirection.RIGHT;
-        transform.Rotate(0f, 180f, 0f);
-    }
-
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector3 wallCheck = new Vector3(transform.position.x + (_wallCheckDistance * GetFacingDirection()), transform.position.y, transform.position.z);
+        Vector3 wallCheck = new Vector3(transform.position.x + (_wallCheckDistance * PlayerData.GetFacingDirection()), transform.position.y, transform.position.z);
         Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, transform.position.z), wallCheck);
 
 
@@ -215,27 +193,39 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    public float GetFacingDirection()
-    {
-        return _facingDirection == FacingDirection.RIGHT ? 1 : -1;
-    }
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //_playerMovementStateManager.OnCollisionEnter2D(collision);
+
         if (collision.gameObject.CompareTag("Ground"))
         {
-            IsGrounded = true;
+            PlayerData.IsGrounded = true;
         }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        //_playerMovementStateManager.OnCollisionExit2D(collision);
+
         if (collision.gameObject.CompareTag("Ground"))
         {
-            IsGrounded = false;
+            PlayerData.IsGrounded = false;
         }
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //_playerMovementStateManager.OnTriggerEnter2D(collision);
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //_playerMovementStateManager.OnTriggerExit2D(collision);
+    }
 }
+
+
