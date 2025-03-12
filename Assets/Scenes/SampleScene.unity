@@ -4089,6 +4089,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2161959811077705480, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
+      propertyPath: JumpPower
+      value: 11.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161959811077705480, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
       propertyPath: WallCheckDistance
       value: 1
       objectReference: {fileID: 0}
