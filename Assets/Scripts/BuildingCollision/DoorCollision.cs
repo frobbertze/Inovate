@@ -31,7 +31,7 @@ public class DisplayEnterPrompt : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Player_SpawnController.spawnPosition = _player.transform.position;
+        //Player_SpawnController.spawnPosition = _player.transform.position;
         //Player_SpawnController.lastScene = SceneMana
 
         BuildingName = collision.gameObject.name;
