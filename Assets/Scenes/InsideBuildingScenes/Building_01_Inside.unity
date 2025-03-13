@@ -2149,6 +2149,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1446114578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3271088905249643119, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
+  m_PrefabInstance: {fileID: 2001362811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9f497a055a1834ca16ca414dac3ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1948628159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,6 +2310,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
+--- !u!114 &2001362812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1846292746214196239, guid: 9063799c118da8045b299927a4d0b7ff, type: 3}
+  m_PrefabInstance: {fileID: 2001362811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5852839434127365040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2311,6 +2333,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enter_Exit_Building
       objectReference: {fileID: 0}
+    - target: {fileID: 4085011438759013097, guid: 2241abc70cffab8428708336e18571d5, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1446114578}
+    - target: {fileID: 4085011438759013097, guid: 2241abc70cffab8428708336e18571d5, type: 3}
+      propertyPath: _prompt
+      value: 
+      objectReference: {fileID: 2001362812}
     - target: {fileID: 5979596309604401173, guid: 2241abc70cffab8428708336e18571d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.77
