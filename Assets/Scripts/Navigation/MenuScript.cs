@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NavigationScript : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
   public void StartNewGame()
     {
