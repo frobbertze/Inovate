@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 03cc30610fc45004a87c73539e59003f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299663
+  packageName: Adventure Platformer Tileset Bundle
+  packageVersion: 1.0
+  assetPath: Assets/Adventure Platformer Tileset Bundle/Dungeon Tileset/Demo/Sprites/Objects/Animations/object_26.controller
+  uploadId: 701337

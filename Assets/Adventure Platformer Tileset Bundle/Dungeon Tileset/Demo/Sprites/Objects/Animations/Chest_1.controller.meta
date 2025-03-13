@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d742b44e6eac3274590852458cbd10e5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299663
+  packageName: Adventure Platformer Tileset Bundle
+  packageVersion: 1.0
+  assetPath: Assets/Adventure Platformer Tileset Bundle/Dungeon Tileset/Demo/Sprites/Objects/Animations/Chest_1.controller
+  uploadId: 701337

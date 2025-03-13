@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c172b8397cfa1e340ba3758d608d4353
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299663
+  packageName: Adventure Platformer Tileset Bundle
+  packageVersion: 1.0
+  assetPath: Assets/Adventure Platformer Tileset Bundle/Dungeon Tileset/Demo/Sprites/Objects/Animations/Coin_c_1.controller
+  uploadId: 701337

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 087a00a4346025b48b96e0cd51cb37e7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299663
+  packageName: Adventure Platformer Tileset Bundle
+  packageVersion: 1.0
+  assetPath: Assets/Adventure Platformer Tileset Bundle/Mayan Temple Tileset/Demo/Sprites/Objects/Animations/door_1.controller
+  uploadId: 701337
