@@ -113,7 +113,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
             
 
 
-            PlayerData.PlayerTransForm.Translate(Vector3.right * PlayerData.xInput * PlayerData.GetFacingDirection() * Time.deltaTime * PlayerData.WalkSpeed);
+       
 
 
             if (PlayerData.ShouldFlip(PlayerData.xInput))

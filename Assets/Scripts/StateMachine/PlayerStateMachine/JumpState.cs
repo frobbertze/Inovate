@@ -101,7 +101,15 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 
             //currentActionStatus = PlayerActionStatus.JUMP;
 
-          PlayerData.RB.linearVelocity = new Vector2(PlayerData.xInput * PlayerData.WalkSpeed, PlayerData.JumpPower);
+            var speed = PlayerData.WalkSpeed;
+            if (PlayerData.isRunning)
+            {
+                speed = PlayerData.RunSpeed;
+            }
+            //PlayerData.PlayerTransForm.Translate(Vector3.right * PlayerData.xInput * PlayerData.GetFacingDirection() * Time.deltaTime * PlayerData.WalkSpeed);
+          
+          
+
         }
     }
 }

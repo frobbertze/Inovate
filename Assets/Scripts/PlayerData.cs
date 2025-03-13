@@ -19,15 +19,19 @@ namespace Assets.Scripts
         public LayerMask WhatIsGround;
         public bool isRunning;
         public bool isJumping;
+        public float JumpStarted;
         public bool isCrouching;
         public float yInput;
         public float xInput;
         public Rigidbody2D RB;
-        [SerializeField] FacingDirection _facingDirection = FacingDirection.RIGHT;
+   
 
         public Transform PlayerTransForm;
 
-        [SerializeField] public Player_AC PlayerAnimationController;
+        [SerializeField] 
+        public Player_AC PlayerAnimationController;
+        [SerializeField]
+        FacingDirection _facingDirection = FacingDirection.RIGHT;
 
 
         private void Awake()

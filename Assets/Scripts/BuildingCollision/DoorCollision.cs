@@ -5,8 +5,10 @@ using UnityEngine;
 public class DisplayEnterPrompt : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI _prompt;
-    [SerializeField] private Player_Controller _player;
+    [SerializeField] 
+    private TextMeshProUGUI _prompt;
+    [SerializeField] 
+    private Player_Controller _player;
     
     private bool EnterBuilding;
 
@@ -31,7 +33,7 @@ public class DisplayEnterPrompt : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Player_SpawnController.spawnPosition = _player.transform.position;
+        //Player_SpawnController.spawnPosition = _player.transform.position;
         //Player_SpawnController.lastScene = SceneMana
 
         BuildingName = collision.gameObject.name;

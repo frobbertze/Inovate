@@ -37,6 +37,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 
             if (PlayerData.xInput == 0 && PlayerData.IsGrounded && PlayerData.isCrouching)
             {
+
                 return PlayerMovementState.CROUCH;
             }
 
