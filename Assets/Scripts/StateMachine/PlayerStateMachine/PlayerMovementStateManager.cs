@@ -33,6 +33,9 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
         }
 
 
+        
+
+
         private void OnDrawGizmos()
         {
             //    RaycastHit2D wallHit = Physics2D.Raycast(transform.position, new Vector2(PlayerData.GetFacingDirection(),0), 1f, PlayerData.WhatIsGround);
@@ -59,6 +62,10 @@ namespace Assets.Scripts.StateMachine.PlayerStateMachine
 
 
         }
+
+
+
+
 
 
     }
