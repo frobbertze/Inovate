@@ -1,42 +1,54 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using System.Collections;
 
-public class DisplayEnterPrompt : MonoBehaviour
+public class DoorCollision : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI _prompt;
     [SerializeField] private Player_Controller _player;
-    
-    private bool EnterBuilding;
+    [SerializeField] private Scenes _insideScene;
+    [SerializeField] private bool isInside;
 
-    private string BuildingName;
+    [SerializeField] private Player_Spawn_Controller _Spawn_Controller;
+
+    private bool DoorInteract;
 
     private bool Colliding;
 
     private void Awake()
     {
         _prompt.enabled = false;
-       
+
+        
 
     }
 
     private void Update()
     {
-
+        
         HandleBuildingEnter();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+          HandleBuildingExit();
+        }
+
+        
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Player_SpawnController.spawnPosition = _player.transform.position;
-        //Player_SpawnController.lastScene = SceneMana
-
-        BuildingName = collision.gameObject.name;
-
-        Debug.Log(BuildingName);
+        if (isInside == false)
+        {
+          _Spawn_Controller.spawnPosition = _player.transform.position;
+          _Spawn_Controller.lastSceneName = SceneManager.GetActiveScene().name;
+        }
 
         Colliding = true;
 
@@ -60,23 +72,35 @@ public class DisplayEnterPrompt : MonoBehaviour
     private void HandleBuildingEnter()
     {
 
-        EnterBuilding = Input.GetKeyDown(KeyCode.E);
+        DoorInteract = Input.GetKeyDown(KeyCode.E);
 
-        if (Colliding == true && EnterBuilding)
+        if (Colliding == true && DoorInteract && isInside == false)
         {
-            Scenes_Controller.LoadScene(Scenes.Building_01_Inside);
+            SceneManager.LoadScene(_insideScene.ToString());
         }
-
 
     }
 
     private void HandleBuildingExit()
     {
 
+        DoorInteract = true; //Input.GetKeyDown(KeyCode.E);
+        
 
+        if(Colliding == true && DoorInteract && isInside == true)
+        {
+           _player.transform.position = _Spawn_Controller.spawnPosition;
+            SceneManager.LoadScene(_Spawn_Controller.lastSceneName);
+
+        }
+
+        
 
     }
-          
+
+    
+
+
 }
 
 

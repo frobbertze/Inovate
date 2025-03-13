@@ -27,9 +27,10 @@ public class Player_Controller : MonoBehaviour
 
         
         PlayerData = GetComponent<PlayerDataModel>();
-        
 
         _playerMovementStateManager = gameObject.GetComponent<PlayerMovementStateManager>();
+
+        
 
     }
     void Start()

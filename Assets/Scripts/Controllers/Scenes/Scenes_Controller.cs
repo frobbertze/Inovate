@@ -22,13 +22,11 @@ public class Scenes_Controller : MonoBehaviour
 
     }
 
-   //public static Scenes ActiveScene()
-   //{
+   public static Scene ActiveScene()
+   {
 
-        //Enum.Parse(SceneManager.GetActiveScene().name, out Scenes _scene);
+        return  SceneManager.GetActiveScene();
 
-        //return _scene;
-
-   //}
+   }
 
 }
